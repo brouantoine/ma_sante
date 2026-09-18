@@ -1,3 +1,4 @@
+
 /*
  * ============================================================
  * MA SANTÉ - ROUTES PRINCIPALES DE L'APPLICATION
@@ -40,140 +41,174 @@ import { useAuth } from "./context/AuthContext";
 
 
 /* ============================================================
-   PAGES
+   PAGE DE CONNEXION
    ============================================================ */
-
-
-/* ------------------------------------------------------------
-   Page de connexion
-   ------------------------------------------------------------ */
 
 import Login from "./pages/Login";
 
 
-/* ------------------------------------------------------------
-   Page principale des modules
-   ------------------------------------------------------------ */
+/* ============================================================
+   PAGE PRINCIPALE DES MODULES
+   ============================================================ */
 
 import Modules from "./pages/Modules";
 
 
-/* ------------------------------------------------------------
-   Ancien tableau de bord
-   ------------------------------------------------------------ */
+/* ============================================================
+   ANCIEN TABLEAU DE BORD
+   ============================================================ */
 
 import Dashboard from "./pages/Dashboard";
 
 
-/* ------------------------------------------------------------
+/* ============================================================
    MODULE DIRECTION
-   ------------------------------------------------------------
-   
-   Fichier :
-       src/pages/Direction.jsx
+   ============================================================
 
-   URL :
-       /direction
-
-   IMPORTANT :
    Direction possède son propre layout complet.
-   Elle ne doit donc PAS être placée à l'intérieur
+
+   Elle est volontairement placée en dehors
    de AppLayout.
-   
-   ------------------------------------------------------------ */
+
+   ============================================================ */
 
 import Direction from "./pages/Direction";
 
 
-/* ------------------------------------------------------------
-   ESPACE CAISSE
-   ------------------------------------------------------------ */
+/* ============================================================
+   MODULE CAISSE
+   ============================================================ */
 
 import Caisse from "./pages/Caisse";
 
 
-/* ------------------------------------------------------------
-   GESTION DES STOCKS
-   ------------------------------------------------------------ */
+/* ============================================================
+   MODULE GESTION DES STOCKS
+   ============================================================ */
 
 import Stocks from "./pages/Stocks";
 
 
-/* ------------------------------------------------------------
+/* ============================================================
    FORMULAIRE DE CRÉATION D'UN PATIENT
-   ------------------------------------------------------------ */
+   ============================================================ */
 
 import PatientForm from "./pages/PatientForm";
 
 
-/* ------------------------------------------------------------
-   GESTION DES RENDEZ-VOUS
-   ------------------------------------------------------------ */
+/* ============================================================
+   MODULE RENDEZ-VOUS
+   ============================================================ */
 
 import Appointments from "./pages/Appointments";
 
 
-/* ------------------------------------------------------------
-   GESTION DES RESSOURCES HUMAINES
-   ------------------------------------------------------------ */
+/* ============================================================
+   MODULE RESSOURCES HUMAINES
+   ============================================================ */
 
 import Employees from "./pages/employees";
 
 
-/* ------------------------------------------------------------
-   GESTION DES CONSULTATIONS
-   ------------------------------------------------------------ */
+/* ============================================================
+   MODULE CONSULTATIONS
+   ============================================================ */
 
 import Consultations from "./pages/Consultations";
 
 
-/* ------------------------------------------------------------
-   GESTION DE L'HOSPITALISATION
-   ------------------------------------------------------------ */
+/* ============================================================
+   MODULE HOSPITALISATION
+   ============================================================ */
 
 import Hospitalization from "./pages/Hospitalization";
 
 
-/* ------------------------------------------------------------
-   GESTION DE LA FACTURATION
-   ------------------------------------------------------------ */
+/* ============================================================
+   MODULE FACTURATION
+   ============================================================ */
 
 import Billing from "./pages/Billing";
 
 
-/* ------------------------------------------------------------
-   GESTION DU LABORATOIRE
-   ------------------------------------------------------------ */
+/* ============================================================
+   MODULE LABORATOIRE
+   ============================================================ */
 
 import Laboratory from "./pages/Laboratory";
 
 
-/* ------------------------------------------------------------
-   GESTION DE LA PHARMACIE
-   ------------------------------------------------------------ */
+/* ============================================================
+   MODULE PHARMACIE
+   ============================================================ */
 
 import Pharmacy from "./pages/pharmacy";
 
 
-/* ------------------------------------------------------------
-   SOINS INFIRMIERS
-   ------------------------------------------------------------ */
+/* ============================================================
+   MODULE SOINS INFIRMIERS
+   ============================================================ */
 
 import Nursing from "./pages/Nursing";
 
 
-/* ------------------------------------------------------------
+/* ============================================================
    PAGES TEMPORAIRES
-   ------------------------------------------------------------ */
+   ============================================================ */
 
 import PlaceholderPage from "./pages/PlaceholderPage";
 
 
-/* ------------------------------------------------------------
-   RAPPORTS
-   ------------------------------------------------------------ */
+/* ============================================================
+   MODULE RAPPORTS ET STATISTIQUES
+   ============================================================
+
+   IMPORTANT :
+   Reports est indépendant du module Direction.
+
+   ============================================================ */
 
 import Reports from "./pages/Reports";
+
+
+/* ============================================================
+   NOUVEAUX MODULES
+   ============================================================ */
+
+
+/* ------------------------------------------------------------
+   MAINTENANCE
+   ------------------------------------------------------------ */
+
+import Maintenance from "./pages/Maintenance";
+
+
+/* ------------------------------------------------------------
+   ADMINISTRATION
+   ------------------------------------------------------------ */
+
+import Administration from "./pages/Administration";
+
+
+/* ------------------------------------------------------------
+   HYGIÈNE ET SÉCURITÉ
+   ------------------------------------------------------------ */
+
+import Hygiene from "./pages/Hygiene";
+
+
+/* ------------------------------------------------------------
+   ARCHIVES
+   ------------------------------------------------------------ */
+
+import Archives from "./pages/Archives";
+
+
+/* ------------------------------------------------------------
+   INTELLIGENCE ARTIFICIELLE
+   ------------------------------------------------------------ */
+
+import Ia from "./pages/Ia";
 
 
 /* ============================================================
@@ -187,22 +222,20 @@ import AppLayout from "./layouts/AppLayout";
    PROTECTION DES ROUTES
    ============================================================ */
 
+/*
+ * Cette fonction protège les pages nécessitant
+ * une authentification.
+ *
+ * Si un utilisateur possède un token :
+ *     → la page demandée est affichée.
+ *
+ * Sinon :
+ *     → il est redirigé vers /login.
+ */
+
 function Protected({ children }) {
 
-  /*
-   * Récupération du token d'authentification.
-   */
-
   const { token } = useAuth();
-
-
-  /*
-   * Si l'utilisateur est connecté :
-   *     → affichage de la page.
-   *
-   * Sinon :
-   *     → retour vers /login.
-   */
 
   return token
     ? children
@@ -235,39 +268,13 @@ export default function App() {
           MODULE DIRECTION
           ======================================================
 
-          IMPORTANT :
+          Direction possède son propre menu et son propre
+          layout.
 
-          Direction est volontairement placée HORS de
-          AppLayout.
+          Elle reste donc en dehors de AppLayout.
 
-          Pourquoi ?
-
-          Direction.jsx possède déjà :
-
-          - son propre logo MA SANTE
-          - son propre menu
-          - sa propre barre supérieure
-          - son propre profil Directeur
-          - son propre dashboard
-
-          Si on la mettait dans AppLayout, les deux layouts
-          seraient affichés en même temps.
-
-          Cela provoquerait notamment :
-
-          - MA SANTÉ affiché deux fois
-          - le menu affiché deux fois
-          - Patients aujourd'hui pouvant apparaître dans
-            une interface imbriquée
-          - deux barres supérieures
-
-          Structure :
-
+          URL :
               /direction
-                   ↓
-              Protected
-                   ↓
-              Direction.jsx
 
           ====================================================== */}
 
@@ -295,7 +302,7 @@ export default function App() {
               ↓
           AppLayout
               ↓
-          module
+          Module
 
           ====================================================== */}
 
@@ -311,6 +318,10 @@ export default function App() {
 
         {/* ====================================================
             PAGE D'ACCUEIL
+            ====================================================
+
+            "/" redirige automatiquement vers "/modules".
+
             ==================================================== */}
 
         <Route
@@ -325,7 +336,7 @@ export default function App() {
 
 
         {/* ====================================================
-            MODULES DE L'APPLICATION
+            PAGE PRINCIPALE DES MODULES
             ==================================================== */}
 
         <Route
@@ -336,14 +347,6 @@ export default function App() {
 
         {/* ====================================================
             MODULE : CAISSE
-            ====================================================
-
-            URL :
-                /caisse
-
-            Fichier :
-                pages/Caisse.jsx
-
             ==================================================== */}
 
         <Route
@@ -354,14 +357,6 @@ export default function App() {
 
         {/* ====================================================
             MODULE : GESTION DES STOCKS
-            ====================================================
-
-            URL :
-                /stocks
-
-            Fichier :
-                pages/Stocks.jsx
-
             ==================================================== */}
 
         <Route
@@ -382,11 +377,6 @@ export default function App() {
 
         {/* ====================================================
             CRÉATION D'UN PATIENT
-            ====================================================
-
-            URL :
-                /patients/new
-
             ==================================================== */}
 
         <Route
@@ -407,14 +397,6 @@ export default function App() {
 
         {/* ====================================================
             MODULE : CONSULTATIONS
-            ====================================================
-
-            URL :
-                /consultations
-
-            Fichier :
-                pages/Consultations.jsx
-
             ==================================================== */}
 
         <Route
@@ -425,14 +407,6 @@ export default function App() {
 
         {/* ====================================================
             MODULE : HOSPITALISATION
-            ====================================================
-
-            URL :
-                /hospitalization
-
-            Fichier :
-                pages/Hospitalization.jsx
-
             ==================================================== */}
 
         <Route
@@ -442,15 +416,7 @@ export default function App() {
 
 
         {/* ====================================================
-            MODULE : COMPTABILITÉ / FACTURATION
-            ====================================================
-
-            URL :
-                /billing
-
-            Fichier :
-                pages/Billing.jsx
-
+            MODULE : FACTURATION / COMPTABILITÉ
             ==================================================== */}
 
         <Route
@@ -461,14 +427,6 @@ export default function App() {
 
         {/* ====================================================
             MODULE : LABORATOIRE
-            ====================================================
-
-            URL :
-                /laboratory
-
-            Fichier :
-                pages/Laboratory.jsx
-
             ==================================================== */}
 
         <Route
@@ -479,14 +437,6 @@ export default function App() {
 
         {/* ====================================================
             MODULE : PHARMACIE
-            ====================================================
-
-            URL :
-                /pharmacy
-
-            Fichier :
-                pages/pharmacy.jsx
-
             ==================================================== */}
 
         <Route
@@ -497,14 +447,6 @@ export default function App() {
 
         {/* ====================================================
             MODULE : SOINS INFIRMIERS
-            ====================================================
-
-            URL :
-                /nursing
-
-            Fichier :
-                pages/Nursing.jsx
-
             ==================================================== */}
 
         <Route
@@ -515,25 +457,6 @@ export default function App() {
 
         {/* ====================================================
             MODULE : RESSOURCES HUMAINES
-            ====================================================
-
-            URL :
-                /employees
-
-            Fichier :
-                pages/employees.jsx
-
-            IMPORTANT :
-
-            AVANT :
-                PlaceholderPage
-
-            MAINTENANT :
-                Employees
-
-            Donc le clic sur Ressources humaines ouvre
-            directement employees.jsx.
-
             ==================================================== */}
 
         <Route
@@ -544,6 +467,10 @@ export default function App() {
 
         {/* ====================================================
             MODULE : ÉQUIPEMENTS MÉDICAUX
+            ====================================================
+
+            Page temporaire pour le moment.
+
             ==================================================== */}
 
         <Route
@@ -558,15 +485,73 @@ export default function App() {
 
         {/* ====================================================
             MODULE : MAINTENANCE
+            ====================================================
+
+            URL :
+                /maintenance
+
+            Fichier :
+                src/pages/Maintenance.jsx
+
             ==================================================== */}
 
         <Route
           path="maintenance"
-          element={
-            <PlaceholderPage
-              title="Maintenance"
-            />
-          }
+          element={<Maintenance />}
+        />
+
+
+        {/* ====================================================
+            MODULE : ADMINISTRATION
+            ====================================================
+
+            URL :
+                /administration
+
+            Fichier :
+                src/pages/Administration.jsx
+
+            ==================================================== */}
+
+        <Route
+          path="administration"
+          element={<Administration />}
+        />
+
+
+        {/* ====================================================
+            MODULE : HYGIÈNE ET SÉCURITÉ
+            ====================================================
+
+            URL :
+                /hygiene
+
+            Fichier :
+                src/pages/Hygiene.jsx
+
+            ==================================================== */}
+
+        <Route
+          path="hygiene"
+          element={<Hygiene />}
+        />
+
+
+        {/* ====================================================
+            MODULE : ARCHIVES
+            ====================================================
+
+            URL :
+                /archives
+
+            Fichier :
+                src/pages/Archives.jsx
+
+            ==================================================== */}
+
+        <Route
+          path="archives"
+          element={<Archives />}
         />
 
 
@@ -578,12 +563,10 @@ export default function App() {
                 /reports
 
             Fichier :
-                pages/Reports.jsx
+                src/pages/Reports.jsx
 
             IMPORTANT :
-
-            Reports reste complètement indépendant de
-            Direction.
+            Ce module est indépendant de Direction.
 
             ==================================================== */}
 
@@ -595,13 +578,61 @@ export default function App() {
 
         {/* ====================================================
             MODULE : INTELLIGENCE ARTIFICIELLE
+            ====================================================
+
+            URL :
+                /ia
+
+            Fichier :
+                src/pages/Ia.jsx
+
             ==================================================== */}
 
         <Route
-          path="ai-assistant"
+          path="ia"
+          element={<Ia />}
+        />
+
+
+        {/* ====================================================
+            MODULE : APPROVISIONNEMENT
+            ====================================================
+
+            Le module existe dans Modules.jsx.
+            Interface temporaire en attendant sa création.
+
+            URL :
+                /procurement
+
+            ==================================================== */}
+
+        <Route
+          path="procurement"
           element={
             <PlaceholderPage
-              title="Intelligence artificielle"
+              title="Approvisionnement"
+            />
+          }
+        />
+
+
+        {/* ====================================================
+            MODULE : ACCUEIL / RÉCEPTION
+            ====================================================
+
+            Le module existe dans Modules.jsx.
+            Interface temporaire en attendant sa création.
+
+            URL :
+                /reception
+
+            ==================================================== */}
+
+        <Route
+          path="reception"
+          element={
+            <PlaceholderPage
+              title="Accueil / Réception"
             />
           }
         />
@@ -609,6 +640,10 @@ export default function App() {
 
         {/* ====================================================
             PARAMÈTRES
+            ====================================================
+
+            Page temporaire pour le moment.
+
             ==================================================== */}
 
         <Route
@@ -628,7 +663,9 @@ export default function App() {
           ROUTE PAR DÉFAUT
           ======================================================
 
-          Toute URL inconnue retourne vers l'accueil.
+          Toute URL inconnue retourne vers "/".
+
+          "/" redirigera ensuite vers "/modules".
 
           ====================================================== */}
 
@@ -644,6 +681,5 @@ export default function App() {
 
 
     </Routes>
-
   );
 }

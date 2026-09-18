@@ -1,3 +1,4 @@
+
 /*
  * ============================================================
  * MA SANTÉ - PAGE DES MODULES
@@ -20,7 +21,6 @@
  */
 
 import { useMemo, useState } from "react";
-
 import { Link } from "react-router-dom";
 
 import {
@@ -65,21 +65,7 @@ const ALL_MODULES = [
 
   /* ==========================================================
      CAISSE
-     ==========================================================
-
-     IMPORTANT :
-     Le module conserve l'id "patients" afin de ne pas casser
-     le système actuel de droits par rôle.
-
-     MAIS son chemin est maintenant :
-
-         /caisse
-
-     Ainsi, lorsqu'on clique sur Caisse, on ouvre :
-
-         pages/Caisse.jsx
-
-  ========================================================== */
+     ========================================================== */
 
   {
     id: "patients",
@@ -99,7 +85,7 @@ const ALL_MODULES = [
 
   /* ==========================================================
      RENDEZ-VOUS
-  ========================================================== */
+     ========================================================== */
 
   {
     id: "appointments",
@@ -119,12 +105,12 @@ const ALL_MODULES = [
 
   /* ==========================================================
      CONSULTATIONS
-  ========================================================== */
+     ========================================================== */
 
   {
     id: "consultations",
 
-    name: "Consultation Medecine Générale",
+    name: "Consultation Médecine Générale",
 
     description:
       "Gérer les consultations médicales et les prescriptions",
@@ -139,7 +125,7 @@ const ALL_MODULES = [
 
   /* ==========================================================
      HOSPITALISATION
-  ========================================================== */
+     ========================================================== */
 
   {
     id: "hospitalization",
@@ -159,7 +145,7 @@ const ALL_MODULES = [
 
   /* ==========================================================
      SOINS INFIRMIERS
-  ========================================================== */
+     ========================================================== */
 
   {
     id: "nursing",
@@ -179,7 +165,7 @@ const ALL_MODULES = [
 
   /* ==========================================================
      LABORATOIRE
-  ========================================================== */
+     ========================================================== */
 
   {
     id: "laboratory",
@@ -199,7 +185,7 @@ const ALL_MODULES = [
 
   /* ==========================================================
      PHARMACIE
-  ========================================================== */
+     ========================================================== */
 
   {
     id: "pharmacy",
@@ -219,7 +205,7 @@ const ALL_MODULES = [
 
   /* ==========================================================
      STOCKS
-  ========================================================== */
+     ========================================================== */
 
   {
     id: "stocks",
@@ -239,7 +225,7 @@ const ALL_MODULES = [
 
   /* ==========================================================
      COMPTABILITÉ
-  ========================================================== */
+     ========================================================== */
 
   {
     id: "accounting",
@@ -259,7 +245,7 @@ const ALL_MODULES = [
 
   /* ==========================================================
      RESSOURCES HUMAINES
-  ========================================================== */
+     ========================================================== */
 
   {
     id: "hr",
@@ -279,22 +265,27 @@ const ALL_MODULES = [
 
   /* ==========================================================
      DIRECTION
-  ========================================================== */
+     ========================================================== */
 
   {
-  id: "direction",
-  name: "Direction",
-  description:
-    "Tableau de bord de la direction et suivi de l'activité de l'établissement",
-  path: "/direction",
-  icon: Building2,
-  color: "yellow",
-},
+    id: "direction",
+
+    name: "Direction",
+
+    description:
+      "Tableau de bord de la direction et suivi de l'activité de l'établissement",
+
+    path: "/direction",
+
+    icon: Building2,
+
+    color: "yellow",
+  },
 
 
   /* ==========================================================
      MAINTENANCE
-  ========================================================== */
+     ========================================================== */
 
   {
     id: "maintenance",
@@ -313,28 +304,8 @@ const ALL_MODULES = [
 
 
   /* ==========================================================
-     APPROVISIONNEMENT
-  ========================================================== */
-
-  {
-    id: "procurement",
-
-    name: "Approvisionnement",
-
-    description:
-      "Gérer les commandes et les fournisseurs",
-
-    path: "/procurement",
-
-    icon: ShoppingCart,
-
-    color: "red",
-  },
-
-
-  /* ==========================================================
      RAPPORTS ET STATISTIQUES
-  ========================================================== */
+     ========================================================== */
 
   {
     id: "reports",
@@ -354,7 +325,7 @@ const ALL_MODULES = [
 
   /* ==========================================================
      ADMINISTRATION
-  ========================================================== */
+     ========================================================== */
 
   {
     id: "administration",
@@ -372,29 +343,12 @@ const ALL_MODULES = [
   },
 
 
-  /* ==========================================================
-     ACCUEIL / RÉCEPTION
-  ========================================================== */
-
-  {
-    id: "reception",
-
-    name: "Accueil / Réception",
-
-    description:
-      "Gérer l'accueil des patients et les admissions",
-
-    path: "/reception",
-
-    icon: Headphones,
-
-    color: "cyan",
-  },
+  
 
 
   /* ==========================================================
      HYGIÈNE ET SÉCURITÉ
-  ========================================================== */
+     ========================================================== */
 
   {
     id: "hygiene",
@@ -402,7 +356,7 @@ const ALL_MODULES = [
     name: "Hygiène et sécurité",
 
     description:
-      "Suivre les contrôles et la sécurité sanitaire",
+      "Suivre les contrôles d'hygiène et la sécurité sanitaire",
 
     path: "/hygiene",
 
@@ -414,7 +368,7 @@ const ALL_MODULES = [
 
   /* ==========================================================
      ARCHIVES
-  ========================================================== */
+     ========================================================== */
 
   {
     id: "archives",
@@ -434,7 +388,7 @@ const ALL_MODULES = [
 
   /* ==========================================================
      INTELLIGENCE ARTIFICIELLE
-  ========================================================== */
+     ========================================================== */
 
   {
     id: "ia",
@@ -443,7 +397,7 @@ const ALL_MODULES = [
 
     description:
       "Assistance intelligente pour l'analyse des informations et l'aide à la décision",
- 
+
     path: "/ia",
 
     icon: Bot,
@@ -462,13 +416,9 @@ const ALL_MODULES = [
 
 const DEFAULT_ROLE_MODULES = {
 
-
   /* ==========================================================
      ADMINISTRATEUR
-     ==========================================================
-
-     L'administrateur possède accès à tous les modules.
-  ========================================================== */
+     ========================================================== */
 
   ADMIN: ALL_MODULES.map(
     (module) => module.id
@@ -477,44 +427,27 @@ const DEFAULT_ROLE_MODULES = {
 
   /* ==========================================================
      DIRECTEUR
-  ========================================================== */
+     ========================================================== */
 
   DIRECTOR: [
 
     "patients",
-
     "appointments",
-
     "consultations",
-
     "hospitalization",
-
     "laboratory",
-
     "pharmacy",
-
     "stocks",
-
     "accounting",
-
     "hr",
-
     "direction",
-
     "maintenance",
-
     "procurement",
-
     "reports",
-
     "administration",
-
     "reception",
-
     "hygiene",
-
     "archives",
-
     "ia",
 
   ],
@@ -522,24 +455,17 @@ const DEFAULT_ROLE_MODULES = {
 
   /* ==========================================================
      MÉDECIN
-  ========================================================== */
+     ========================================================== */
 
   DOCTOR: [
 
     "patients",
-
     "appointments",
-
     "consultations",
-
     "hospitalization",
-
     "laboratory",
-
     "pharmacy",
-
     "reports",
-
     "ia",
 
   ],
@@ -547,18 +473,14 @@ const DEFAULT_ROLE_MODULES = {
 
   /* ==========================================================
      INFIRMIER
-  ========================================================== */
+     ========================================================== */
 
   NURSE: [
 
     "patients",
-
     "appointments",
-
     "hospitalization",
-
     "nursing",
-
     "laboratory",
 
   ],
@@ -566,14 +488,12 @@ const DEFAULT_ROLE_MODULES = {
 
   /* ==========================================================
      RÉCEPTIONNISTE
-  ========================================================== */
+     ========================================================== */
 
   RECEPTION: [
 
     "patients",
-
     "appointments",
-
     "reception",
 
   ],
@@ -581,12 +501,11 @@ const DEFAULT_ROLE_MODULES = {
 
   /* ==========================================================
      LABORANTIN
-  ========================================================== */
+     ========================================================== */
 
   LAB: [
 
     "patients",
-
     "laboratory",
 
   ],
@@ -594,14 +513,12 @@ const DEFAULT_ROLE_MODULES = {
 
   /* ==========================================================
      PHARMACIEN
-  ========================================================== */
+     ========================================================== */
 
   PHARMACY: [
 
     "patients",
-
     "pharmacy",
-
     "stocks",
 
   ],
@@ -609,29 +526,25 @@ const DEFAULT_ROLE_MODULES = {
 
   /* ==========================================================
      COMPTABLE
-  ========================================================== */
+     ========================================================== */
 
   ACCOUNTING: [
 
     "patients",
-
     "accounting",
-
     "reports",
 
   ],
 
 
   /* ==========================================================
-     STOCK
-  ========================================================== */
+     RESPONSABLE DES STOCKS
+     ========================================================== */
 
   STOCK: [
 
     "stocks",
-
     "pharmacy",
-
     "procurement",
 
   ],
@@ -639,12 +552,11 @@ const DEFAULT_ROLE_MODULES = {
 
   /* ==========================================================
      RESSOURCES HUMAINES
-  ========================================================== */
+     ========================================================== */
 
   HR: [
 
     "hr",
-
     "reports",
 
   ],
@@ -652,7 +564,7 @@ const DEFAULT_ROLE_MODULES = {
 
   /* ==========================================================
      MAINTENANCE
-  ========================================================== */
+     ========================================================== */
 
   MAINTENANCE: [
 
@@ -665,12 +577,41 @@ const DEFAULT_ROLE_MODULES = {
 
 /*
  * ============================================================
+ * NORMALISATION DU RÔLE
+ * ============================================================
+ *
+ * Le backend peut retourner par exemple :
+ *
+ * ADMIN
+ * admin
+ * Admin
+ *
+ * On normalise afin d'éviter qu'un rôle valide soit considéré
+ * comme inconnu.
+ *
+ * ============================================================
+ */
+
+function normalizeRole(role) {
+
+  if (!role) {
+    return "";
+  }
+
+  return String(role)
+    .trim()
+    .toUpperCase();
+
+}
+
+
+/*
+ * ============================================================
  * COMPOSANT PRINCIPAL
  * ============================================================
  */
 
 export default function Modules() {
-
 
   /*
    * ==========================================================
@@ -711,6 +652,25 @@ export default function Modules() {
 
   /*
    * ==========================================================
+   * RÔLE NORMALISÉ
+   * ==========================================================
+   */
+
+  const userRole = useMemo(() => {
+
+    return normalizeRole(
+      user?.role
+      ||
+      user?.role_name
+      ||
+      user?.role_code
+    );
+
+  }, [user]);
+
+
+  /*
+   * ==========================================================
    * MODULES AUTORISÉS
    * ==========================================================
    */
@@ -718,8 +678,7 @@ export default function Modules() {
   const authorizedModules = useMemo(() => {
 
     /*
-     * Si aucun utilisateur n'est connecté,
-     * aucun module n'est affiché.
+     * Aucun utilisateur connecté.
      */
 
     if (!user) {
@@ -732,6 +691,28 @@ export default function Modules() {
     /*
      * ========================================================
      * CAS 1 :
+     * L'administrateur est connecté.
+     *
+     * Il peut voir tous les modules.
+     * ========================================================
+     */
+
+    if (
+      userRole === "ADMIN"
+      ||
+      userRole === "ADMINISTRATOR"
+      ||
+      userRole === "ADMINISTRATEUR"
+    ) {
+
+      return ALL_MODULES;
+
+    }
+
+
+    /*
+     * ========================================================
+     * CAS 2 :
      * Le backend fournit directement les modules.
      * ========================================================
      */
@@ -748,18 +729,17 @@ export default function Modules() {
 
     /*
      * ========================================================
-     * CAS 2 :
+     * CAS 3 :
      * Les modules sont déterminés selon le rôle.
      * ========================================================
      */
 
     const roleModules =
-      DEFAULT_ROLE_MODULES[user.role];
+      DEFAULT_ROLE_MODULES[userRole];
 
 
     /*
-     * Si le rôle n'est pas reconnu,
-     * aucun module n'est affiché.
+     * Rôle inconnu.
      */
 
     if (!roleModules) {
@@ -778,7 +758,10 @@ export default function Modules() {
         roleModules.includes(module.id)
     );
 
-  }, [user]);
+  }, [
+    user,
+    userRole,
+  ]);
 
 
   /*
@@ -796,8 +779,7 @@ export default function Modules() {
 
 
     /*
-     * Si aucune recherche n'est effectuée,
-     * afficher tous les modules autorisés.
+     * Aucune recherche.
      */
 
     if (!value) {
@@ -808,7 +790,7 @@ export default function Modules() {
 
 
     /*
-     * Rechercher dans le nom et la description.
+     * Recherche dans le nom et la description.
      */
 
     return authorizedModules.filter(
@@ -865,7 +847,7 @@ export default function Modules() {
 
       {/* ======================================================
           SIDEBAR
-      ====================================================== */}
+          ====================================================== */}
 
       <aside className="modules-sidebar">
 
@@ -896,21 +878,21 @@ export default function Modules() {
 
       {/* ======================================================
           ZONE PRINCIPALE
-      ====================================================== */}
+          ====================================================== */}
 
       <div className="modules-main">
 
 
         {/* ====================================================
             HEADER
-        ==================================================== */}
+            ==================================================== */}
 
         <header className="modules-topbar">
 
 
           {/* ==================================================
               LOGO
-          ================================================== */}
+              ================================================== */}
 
           <div className="modules-brand">
 
@@ -936,7 +918,7 @@ export default function Modules() {
 
           {/* ==================================================
               UTILISATEUR
-          ================================================== */}
+              ================================================== */}
 
           <div className="modules-user">
 
@@ -986,6 +968,8 @@ export default function Modules() {
 
                 {user?.role_label
                   ||
+                  user?.role
+                  ||
                   "Utilisateur"}
 
               </small>
@@ -999,7 +983,7 @@ export default function Modules() {
 
         {/* ====================================================
             CONTENU
-        ==================================================== */}
+            ==================================================== */}
 
         <main className="modules-content">
 
@@ -1009,7 +993,7 @@ export default function Modules() {
 
             {/* ==================================================
                 TITRE
-            ================================================== */}
+                ================================================== */}
 
             <div className="modules-heading">
 
@@ -1039,7 +1023,7 @@ export default function Modules() {
 
             {/* ==================================================
                 RECHERCHE
-            ================================================== */}
+                ================================================== */}
 
             <div className="modules-search-area">
 
@@ -1088,7 +1072,7 @@ export default function Modules() {
 
               {/* =================================================
                   FILTRE
-              ================================================= */}
+                  ================================================= */}
 
               <button
                 className="all-modules-button"
@@ -1111,7 +1095,7 @@ export default function Modules() {
 
             {/* ==================================================
                 GRILLE DES MODULES
-            ================================================== */}
+                ================================================== */}
 
             {filteredModules.length > 0 ? (
 
@@ -1138,7 +1122,7 @@ export default function Modules() {
 
                         {/* ====================================
                             ICÔNE
-                        ==================================== */}
+                            ==================================== */}
 
                         <div className="module-icon">
 
@@ -1152,7 +1136,7 @@ export default function Modules() {
 
                         {/* ====================================
                             TEXTE
-                        ==================================== */}
+                            ==================================== */}
 
                         <div className="module-text">
 
@@ -1170,7 +1154,7 @@ export default function Modules() {
 
                         {/* ====================================
                             FLÈCHE
-                        ==================================== */}
+                            ==================================== */}
 
                         <ChevronRight
                           className="module-arrow"
@@ -1189,10 +1173,9 @@ export default function Modules() {
 
             ) : (
 
-
               /* =================================================
                  AUCUN MODULE
-              ================================================= */
+                 ================================================= */
 
               <div className="modules-empty">
 
@@ -1230,7 +1213,7 @@ export default function Modules() {
 
             {/* ==================================================
                 INFORMATION
-            ================================================== */}
+                ================================================== */}
 
             <div className="modules-information">
 
