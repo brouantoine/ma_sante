@@ -1,0 +1,19 @@
+:root {
+  /* Palette MA SANTÉ inspirée de la maquette fournie. */
+  --primary: #0b5b9a;
+  --primary-dark: #073f70;
+  --primary-soft: #eaf4fb;
+  --green: #079b68;
+  --green-soft: #e9f8f1;
+  --text: #18324a;
+  --muted: #718398;
+  --bg: #f4f8fb;
+  --surface: #ffffff;
+  --border: #dce7ef;
+  --danger: #d94a4a;
+  --warning: #e39a28;
+  --purple: #7359c7;
+  --shadow: 0 8px 24px rgba(22, 64, 98, .08);
+  --radius: 12px;
+  --font: "Segoe UI", Roboto, Arial, sans-serif;
+}

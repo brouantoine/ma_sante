@@ -1,0 +1,973 @@
+/* ============================================================
+   MA SANTÉ CLINIQUE
+   ESPACE CAISSE
+   ============================================================ */
+
+/* ============================================================
+   VARIABLES
+   ============================================================ */
+
+:root {
+  --caisse-blue-dark: #07365b;
+  --caisse-blue: #0878df;
+  --caisse-blue-light: #eaf5ff;
+
+  --caisse-text: #18324a;
+  --caisse-muted: #7890a6;
+
+  --caisse-border: #dce9f3;
+  --caisse-bg: #f6fbff;
+
+  --caisse-green: #10a86b;
+  --caisse-green-bg: #dff7eb;
+
+  --caisse-orange: #f3a51c;
+  --caisse-orange-bg: #fff0cf;
+}
+
+
+/* ============================================================
+   PAGE PRINCIPALE
+   ============================================================ */
+
+.caisse-page {
+  min-height: 100vh;
+
+  display: flex;
+
+  background: var(--caisse-bg);
+
+  color: var(--caisse-text);
+
+  font-family:
+    Inter,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+
+.caisse-sidebar {
+  width: 300px;
+
+  flex: 0 0 300px;
+
+  min-height: 100vh;
+
+  padding: 22px 14px;
+
+  box-sizing: border-box;
+
+  background:
+    linear-gradient(
+      180deg,
+      #073b61 0%,
+      #062f4f 100%
+    );
+
+  box-shadow:
+    5px 0 18px
+    rgba(13, 66, 101, 0.08);
+}
+
+
+/* ============================================================
+   LOGO
+   ============================================================ */
+
+.caisse-brand {
+  height: 66px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding:
+    0 18px 16px;
+
+  box-sizing: border-box;
+}
+
+
+/* Icône du logo */
+
+.brand-icon {
+  width: 45px;
+  height: 45px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border:
+    3px solid #20a7ef;
+
+  border-radius: 13px;
+
+  color: #20a7ef;
+
+  font-size: 24px;
+
+  background:
+    rgba(32, 167, 239, 0.08);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(35, 167, 244, 0.08);
+}
+
+
+/* Texte du logo */
+
+.brand-text {
+  color: white;
+
+  font-size: 25px;
+
+  font-weight: 800;
+
+  letter-spacing: -1px;
+}
+
+.brand-text span {
+  color: white;
+}
+
+.brand-text strong {
+  color: #21a7ef;
+}
+
+
+/* ============================================================
+   MENU SIDEBAR
+   ============================================================ */
+
+.caisse-nav {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 7px;
+
+  margin-top: 22px;
+}
+
+
+/* Élément menu */
+
+.caisse-nav-item {
+  width: 100%;
+
+  min-height: 54px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 17px;
+
+  padding:
+    0 17px;
+
+  border: 0;
+
+  border-radius: 10px;
+
+  box-sizing: border-box;
+
+  background: transparent;
+
+  color: #eaf5ff;
+
+  text-decoration: none;
+
+  font: inherit;
+
+  font-size: 17px;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+/* Hover */
+
+.caisse-nav-item:hover {
+  background:
+    rgba(255, 255, 255, 0.09);
+
+  transform:
+    translateX(2px);
+}
+
+
+/* Menu actif */
+
+.caisse-nav-item.active {
+  background:
+    linear-gradient(
+      90deg,
+      #087de0,
+      #0a6fc5
+    );
+
+  box-shadow:
+    inset 0 0 0 1px
+    rgba(255, 255, 255, 0.06);
+}
+
+
+/* Icônes */
+
+.caisse-nav-item svg {
+  flex: 0 0 auto;
+}
+
+
+/* ============================================================
+   CONTENU
+   ============================================================ */
+
+.caisse-content {
+  min-width: 0;
+
+  flex: 1;
+}
+
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.caisse-header {
+  min-height: 88px;
+
+  padding:
+    0 42px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 24px;
+
+  background: #eaf6ff;
+
+  border-bottom:
+    1px solid #dcebf7;
+
+  box-sizing: border-box;
+}
+
+
+/* Titre */
+
+.caisse-header h1 {
+  margin: 0;
+
+  color: #09599a;
+
+  font-size: 26px;
+
+  font-weight: 750;
+}
+
+
+/* Sous-titre */
+
+.caisse-header p {
+  margin:
+    8px 0 0;
+
+  color: #0b5d9e;
+
+  font-size: 21px;
+
+  font-weight: 700;
+}
+
+
+/* ============================================================
+   PROFIL CAISSIÈRE
+   ============================================================ */
+
+.cashier-profile {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+
+/* Avatar */
+
+.cashier-avatar {
+  width: 48px;
+  height: 48px;
+
+  display: grid;
+
+  place-items: center;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0b80dd,
+      #083c66
+    );
+
+  color: white;
+
+  font-weight: 800;
+
+  font-size: 14px;
+
+  border:
+    3px solid white;
+
+  box-shadow:
+    0 2px 8px
+    rgba(0, 0, 0, 0.12);
+}
+
+
+/* Informations */
+
+.cashier-info strong,
+.cashier-info span {
+  display: block;
+}
+
+.cashier-info strong {
+  color: #193c5a;
+
+  font-size: 17px;
+}
+
+.cashier-info span {
+  margin-top: 2px;
+
+  color: #7190aa;
+
+  font-size: 14px;
+
+  font-weight: 600;
+}
+
+
+/* ============================================================
+   CONTENU PRINCIPAL
+   ============================================================ */
+
+.caisse-main {
+  padding:
+    32px 42px 44px;
+}
+
+
+/* ============================================================
+   BARRE OUTILS
+   ============================================================ */
+
+.patient-toolbar {
+  display: flex;
+
+  align-items: center;
+
+  gap: 26px;
+
+  margin-bottom: 17px;
+}
+
+
+/* ============================================================
+   RECHERCHE
+   ============================================================ */
+
+.search-box {
+  height: 58px;
+
+  flex: 1;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 13px;
+
+  padding:
+    0 18px;
+
+  border:
+    1px solid #dbe8f2;
+
+  border-radius: 10px;
+
+  background: white;
+
+  box-shadow:
+    0 2px 8px
+    rgba(34, 92, 130, 0.04);
+
+  box-sizing: border-box;
+}
+
+
+/* Icône recherche */
+
+.search-box svg {
+  color: #9ab0c2;
+
+  flex-shrink: 0;
+}
+
+
+/* Champ */
+
+.search-box input {
+  width: 100%;
+
+  min-width: 0;
+
+  border: 0;
+
+  outline: 0;
+
+  background: transparent;
+
+  color: #294b65;
+
+  font-size: 16px;
+}
+
+
+/* Placeholder */
+
+.search-box input::placeholder {
+  color: #a0b4c5;
+}
+
+
+/* ============================================================
+   BOUTON NOUVEAU PATIENT
+   ============================================================ */
+
+.new-patient-btn {
+  height: 58px;
+
+  min-width: 250px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 10px;
+
+  border: 0;
+
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #087fe8,
+      #096ed0
+    );
+
+  color: white;
+
+  font: inherit;
+
+  font-size: 17px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 7px 18px
+    rgba(7, 119, 220, 0.18);
+
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+
+/* Hover */
+
+.new-patient-btn:hover {
+  transform:
+    translateY(-1px);
+
+  box-shadow:
+    0 10px 23px
+    rgba(7, 119, 220, 0.23);
+}
+
+
+/* ============================================================
+   TABLEAU
+   ============================================================ */
+
+.patients-card {
+  overflow: hidden;
+
+  border:
+    1px solid #dfeaf2;
+
+  border-radius: 11px;
+
+  background: white;
+
+  box-shadow:
+    0 3px 12px
+    rgba(28, 81, 113, 0.04);
+}
+
+
+/* Permettre le scroll horizontal */
+
+.table-wrapper {
+  width: 100%;
+
+  overflow-x: auto;
+}
+
+
+/* Table */
+
+.patients-table {
+  width: 100%;
+
+  min-width: 820px;
+
+  border-collapse: collapse;
+}
+
+
+/* Cellules */
+
+.patients-table th,
+.patients-table td {
+  height: 57px;
+
+  padding:
+    0 22px;
+
+  text-align: left;
+
+  border-bottom:
+    1px solid #e4edf4;
+
+  white-space: nowrap;
+}
+
+
+/* En-tête */
+
+.patients-table th {
+  height: 54px;
+
+  color: #173b59;
+
+  background: #f3f9fd;
+
+  font-size: 15px;
+
+  font-weight: 800;
+}
+
+
+/* Corps */
+
+.patients-table td {
+  color: #49657b;
+
+  font-size: 15px;
+
+  font-weight: 600;
+}
+
+
+/* Dernière ligne */
+
+.patients-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+
+/* Nom patient */
+
+.patient-name {
+  color: #284b65 !important;
+
+  font-weight: 750 !important;
+}
+
+
+/* ============================================================
+   STATUTS
+   ============================================================ */
+
+.status-badge {
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-width: 130px;
+
+  height: 33px;
+
+  padding:
+    0 13px;
+
+  border-radius: 6px;
+
+  font-size: 14px;
+
+  font-weight: 800;
+
+  box-sizing: border-box;
+}
+
+
+/* En attente */
+
+.status-waiting {
+  color: #e99800;
+
+  background:
+    var(--caisse-orange-bg);
+}
+
+
+/* En consultation */
+
+.status-consultation {
+  color: #079b63;
+
+  background:
+    var(--caisse-green-bg);
+}
+
+
+/* Payé */
+
+.status-paid {
+  color: #079b63;
+
+  background:
+    var(--caisse-green-bg);
+}
+
+
+/* ============================================================
+   BOUTON ACTION TABLEAU
+   ============================================================ */
+
+.row-action {
+  width: 34px;
+  height: 34px;
+
+  border: 0;
+
+  border-radius: 7px;
+
+  background: #eff7fd;
+
+  color: #1682d7;
+
+  cursor: pointer;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+
+.row-action:hover {
+  background: #dceffd;
+}
+
+
+/* Aucun résultat */
+
+.empty-row {
+  height: 100px !important;
+
+  text-align: center !important;
+
+  color: #8da1b2 !important;
+}
+
+
+/* ============================================================
+   BILANS
+   ============================================================ */
+
+.summary-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 24px;
+
+  margin-top: 24px;
+}
+
+
+/* Carte */
+
+.summary-card {
+  min-height: 125px;
+
+  padding:
+    20px 27px;
+
+  border:
+    1px solid #dce8f0;
+
+  border-radius: 11px;
+
+  background: white;
+
+  box-sizing: border-box;
+
+  box-shadow:
+    0 2px 10px
+    rgba(28, 81, 113, 0.035);
+}
+
+
+/* Label */
+
+.summary-label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #37556e;
+
+  font-size: 16px;
+
+  font-weight: 800;
+}
+
+
+/* Montant */
+
+.summary-value {
+  display: block;
+
+  font-size:
+    clamp(22px, 2vw, 30px);
+
+  line-height: 1.15;
+
+  font-weight: 850;
+
+  letter-spacing: -0.5px;
+}
+
+
+/* Montants verts */
+
+.summary-value.green {
+  color: #079c68;
+}
+
+
+/* Montant bleu */
+
+.summary-value.blue {
+  color: #0757bd;
+}
+
+
+/* Texte secondaire */
+
+.summary-note {
+  display: block;
+
+  margin-top: 8px;
+
+  color: #8ba0b1;
+
+  font-size: 12px;
+}
+
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+
+@media (max-width: 1100px) {
+
+  .caisse-sidebar {
+    width: 245px;
+
+    flex-basis: 245px;
+  }
+
+  .caisse-header,
+  .caisse-main {
+    padding-left: 25px;
+
+    padding-right: 25px;
+  }
+
+  .new-patient-btn {
+    min-width: 210px;
+  }
+}
+
+
+/* ============================================================
+   TABLETTE
+   ============================================================ */
+
+@media (max-width: 850px) {
+
+  .caisse-page {
+    display: block;
+  }
+
+
+  /* Sidebar */
+
+  .caisse-sidebar {
+    width: 100%;
+
+    min-height: auto;
+
+    padding: 12px;
+  }
+
+
+  .caisse-brand {
+    padding-bottom: 8px;
+  }
+
+
+  .caisse-nav {
+    flex-direction: row;
+
+    overflow-x: auto;
+
+    margin-top: 8px;
+
+    padding-bottom: 3px;
+  }
+
+
+  .caisse-nav-item {
+    width: auto;
+
+    flex:
+      0 0 auto;
+
+    min-height: 46px;
+  }
+
+
+  /* Header */
+
+  .caisse-header {
+    padding:
+      18px 20px;
+
+    align-items:
+      flex-start;
+  }
+
+
+  .caisse-header p {
+    font-size: 17px;
+  }
+
+
+  /* Toolbar */
+
+  .patient-toolbar {
+    align-items: stretch;
+
+    flex-direction: column;
+  }
+
+
+  .new-patient-btn {
+    width: 100%;
+  }
+
+
+  /* Bilans */
+
+  .summary-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 520px) {
+
+  .caisse-header {
+    flex-direction: column;
+  }
+
+
+  .cashier-profile {
+    align-self: flex-start;
+  }
+
+
+  .caisse-main {
+    padding:
+      20px 14px 30px;
+  }
+
+
+  .caisse-header h1 {
+    font-size: 22px;
+  }
+
+
+  .caisse-header p {
+    font-size: 16px;
+  }
+
+
+  .summary-card {
+    padding:
+      18px 20px;
+  }
+}
